@@ -1,0 +1,110 @@
+/* 
+    - This was from:
+    - https://www.youtube.com/watch?v=McPdzhLRzCg
+*/
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;400&display=swap'); 
+
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+
+    font-family: 'Poppins', sans-serif;
+}
+body {
+    /* height: 130vh; */
+    background-color: #ECECE4;
+}
+
+::selection {
+    color: #ffffff65;
+}
+.header {
+    width: 100%;
+    height: 7rem;
+    background-color: #2C2C2C;
+    box-shadow: 0 1px 10px 0 #022;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.header p {
+    text-transform: capitalize;
+    color: #E4E4E4;
+    font-size: 2rem;
+    padding: 0.6rem 0;
+    opacity: 0.75;
+}
+/* img {
+    width: 50px;
+    height: 50px;
+} */
+.container {
+    padding: 2rem;
+
+}
+.slider-wrapper {
+    position: relative;
+    max-width: 48rem;
+    margin: 0 auto;
+
+
+}
+.slider {
+    display: flex;
+    aspect-ratio: 16 / 9;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    /* 
+    NOTE:
+        - scroll-snap-type: x mandatory;
+        - "x" value is for making the silder to overflow along x-axis.
+        - "mandatory" value forces the behavior to always sanp to next snap position,
+        making the slide effect we want.
+        - however, It will not be visible untill we add "scroll-snap-align: ;" property later!!!
+     */
+    scroll-behavior: smooth;
+    box-shadow: 0 1.5rem 3rem -0.75rem rgba(0, 0, 0, 25%);
+    border-radius: .5rem;
+
+
+}
+.slider::-webkit-scrollbar {
+    display: none;
+}
+.slider img {
+    flex: 1 0 100%;
+    /* 
+    - To be remember:
+    - flex is shorhand for 
+    - flex-grow  flex-shrink  flex-basis
+    - flex-grow: 1; => will make the image qual to size of the container.
+    - flex-shrink: 0; => every image retain the width it needs and not wrap its content.
+    - flex-basis: 100% => every omage will have an ainitial size of 100%, 
+    meaning it will take up the entire parent container.
+     */
+    scroll-snap-align: start;
+    object-fit: cover;
+    filter: opacity(0.85);
+}
+.slider-nav {
+    display: flex;
+    column-gap: 1rem;
+    position: absolute;
+    bottom: 1.25rem;
+    left: 50%;
+    transform: translate(-50%);
+    z-index: 1;
+}
+.slider-nav a {
+    width: 0.5rem;
+    height: 0.5rem;
+    border-radius: 50%;
+    background-color: #fff;
+    opacity: .75;
+    transition: opacity ease 250ms;
+}
+.slider-nav a:hover {
+    opacity: 1;
+}
